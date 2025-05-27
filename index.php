@@ -3,8 +3,12 @@ include('connection.php');
 
 $con = connection();
 
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT usuarios.*, roles.rol AS nombre_rol FROM usuarios
+INNER JOIN roles ON usuarios.id_rol = roles.id_rol";
 $query = mysqli_query($con, $sql);
+
+$sqlRol = "SELECT * FROM roles";
+$queryRol = mysqli_query($con, $sqlRol);
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +31,14 @@ $query = mysqli_query($con, $sql);
             <label for="name">Dirección</label>
             <input type="text" name="address" placeholder="Dirección">
             <label for="name">Usuario</label>
-            <input type="text" name="Username" placeholder="Usuario">
+            <input type="text" name="username" placeholder="Usuario">
             <label for="name">Contraseña</label>
             <input type="password" name="passUser" placeholder="Contraseña">
             <label for="name">Rol</label>
             <select name="rol" id="rol">
-                <option value="Administrador">Administrador</option>
-                <option value="Residente">Residente</option>
-                <option value="Visitante">Visitante</option>
-                <option value="Constratista">Contratista</option>
+                <?php while($rowRol = mysqli_fetch_assoc($queryRol)): ?>
+                <option value="rol"><?= $rowRol['rol']?></option>
+                <?php endwhile; ?>
             </select>
             
             <input type="submit" value="Registrar">
@@ -68,11 +71,11 @@ $query = mysqli_query($con, $sql);
                     <td><?= $row['direccion'] ?></td>
                     <td><?= $row['usuario'] ?></td>
                     <td><?= $row['passUser'] ?></td>
-                    <td><?= $row['id_rol'] ?></td>
+                    <td><?= $row['nombre_rol'] ?></td>
                     <td><a href="">Editar</a></td>
                     <td><a href="">Eliminar</a></td>
                 </tr>
-                <?php endwhile ?>
+                <?php endwhile; ?>
             </tbody>
         </table>
     </div>
