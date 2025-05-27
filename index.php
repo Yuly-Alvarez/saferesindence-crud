@@ -32,5 +32,36 @@
             <input type="submit" value="Registrar">
         </form>
     </div>
+    <div>
+        <h1>Usuarios</h1>
+        <table>
+            <thead>
+                <tr>
+                    <tb>Nombre</tb>
+                    <tb>Apellido</tb>
+                    <tb>Teléfono</tb>
+                    <tb>Dirección</tb>
+                    <tb>Usuario</tb>
+                    <tb>Contraseña</tb>
+                    <tb>Rol</tb>
+                    <tb>Editar</tb>
+                    <tb>Eliminar</tb>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="">Editar</a></td>
+                    <td><a href="">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
