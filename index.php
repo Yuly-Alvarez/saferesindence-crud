@@ -4,7 +4,7 @@ include('connection.php');
 $con = connection();
 
 $sql = "SELECT usuarios.*, roles.rol AS nombre_rol FROM usuarios
-INNER JOIN roles ON usuarios.id_rol = roles.id_rol";
+INNER JOIN roles ON usuarios.id_rol = roles.id_rol ORDER BY usuarios.id_user ASC";
 $query = mysqli_query($con, $sql);
 
 $sqlRol = "SELECT * FROM roles";
@@ -21,23 +21,23 @@ $queryRol = mysqli_query($con, $sqlRol);
 <body>
     <div>
         <h1>Registro usuarios</h1>
-        <form action="">
+        <form action="insert.php" method="post">
             <label for="name">Nombre</label>
             <input type="text" name="name" placeholder="Nombre">
-            <label for="name">Apellido</label>
+            <label for="lastname">Apellido</label>
             <input type="text" name="lastName" placeholder="Apellido">
-            <label for="name">Teléfono</label>
+            <label for="phone">Teléfono</label>
             <input type="number" name="phone" placeholder="Teléfono">
-            <label for="name">Dirección</label>
+            <label for="address">Dirección</label>
             <input type="text" name="address" placeholder="Dirección">
-            <label for="name">Usuario</label>
+            <label for="username">Usuario</label>
             <input type="text" name="username" placeholder="Usuario">
-            <label for="name">Contraseña</label>
+            <label for="passUser">Contraseña</label>
             <input type="password" name="passUser" placeholder="Contraseña">
-            <label for="name">Rol</label>
+            <label for="rol">Rol</label>
             <select name="rol" id="rol">
                 <?php while($rowRol = mysqli_fetch_assoc($queryRol)): ?>
-                <option value="rol"><?= $rowRol['rol']?></option>
+                <option value="<?= $rowRol['id_rol']?>"><?= $rowRol['rol']?></option>
                 <?php endwhile; ?>
             </select>
             
