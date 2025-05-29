@@ -72,7 +72,7 @@ $queryRol = mysqli_query($con, $sqlRol);
                     <td><?= $row['usuario'] ?></td>
                     <td><?= $row['passUser'] ?></td>
                     <td><?= $row['nombre_rol'] ?></td>
-                    <td><a href="">Editar</a></td>
+                    <td><a href="update.php?id_user=<?= $row['id_user'] ?>">Editar</a></td>
                     <td><a href="">Eliminar</a></td>
                 </tr>
                 <?php endwhile; ?>
